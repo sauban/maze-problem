@@ -93,5 +93,9 @@ const arrayToBoard = (iArray, cols, rows) => {
     return newBoard(board, iArray.length);
   }
 
-  const Util = { arrayToBoard, getPlayerCell, getCellInRow, findAndReplaceCell, getCellByCoord };
+  const getFruitCells = (cells) => {
+    return _.flattenDeep(cells).filter(cell => cell.value === 'fruit');
+  }
+
+  const Util = { arrayToBoard, getPlayerCell, getCellInRow, findAndReplaceCell, getCellByCoord, getFruitCells };
   export default Util;

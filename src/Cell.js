@@ -1,25 +1,24 @@
 import React from 'react';
+import mario from './mario.png';
+import mushroom from './mushroom.png';
 
 const style = ({ size, cell }) => {
     const dim = size + 'px';
-    let color;
-    switch ( cell.value ){
-        case 'fruit':
-            color = 'green';
-            break;
-        case 'player':
-            color = 'red';
-            break;
-        default:
-            color = 'white';
-    }
-    return {
+    let style = {
         width: dim,
         height: dim,
-        backgroundColor: color,
+        backgroundSize: 'contain',
         border: '1px solid black',
         transition: 'all 0.1s ease'
     };
+    if(cell.value === 'fruit'){
+        style.backgroundImage = `url(${mushroom})`;
+    } 
+    if(cell.value === 'player') {
+        style.backgroundImage = `url(${mario})`;        
+    }
+
+    return style;
 };
 
-export default (props) => <td key={props.cell.y} style={style(props)}/>
+export default (props) => <td style={style(props)}/>
